@@ -1,0 +1,21 @@
+const Router = require('express')
+const router = new Router()
+const journalRouter = require('./journalRouter')
+const articleRouter = require('./articleRouter')
+const companyRouter = require('./companyRouter')
+const conferenceRouter = require('./conferenceRouter')
+const hotelRouter = require('./hotelRouter')
+const newsRouter = require('./newsRouter')
+const typeRouter = require('./typeRouter')
+const userRouter = require('./userRouter')
+
+router.use('/user', userRouter)
+router.use('/journal', journalRouter)
+router.use('/type', typeRouter)
+router.use('/article', articleRouter)
+router.use('/news', newsRouter)
+router.use('/company', companyRouter)
+router.use('/hotel', hotelRouter)
+router.use('/conference', conferenceRouter)
+
+module.exports = router
