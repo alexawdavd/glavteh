@@ -130,7 +130,7 @@ BasketJournal.belongsTo(Basket)
 // BasketJournal
 BasketJournal.hasOne(Journal)
 Journal.belongsTo(BasketJournal)
-// Journal
+// JournalPage
 Journal.hasOne(Type)
 Type.belongsTo(Journal)
 Journal.hasMany(Article)
