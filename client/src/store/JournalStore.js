@@ -1,27 +1,31 @@
 import {makeAutoObservable} from "mobx";
 
-export default class UserStore{
+export default class JournalStore{
     constructor() {
         this._types = [
-            {id: 1, name: ''},
-            {id: 1, name: ''}
+            {id: 1, name: 'Холодильники'},
+            {id: 1, name: 'Смартфоны'}
+        ]
+        this._journals = [
+            {id: 1, name: 'Выпуск 99', price: 1000, img: "img/file/img.png", description: "Описание", numOfPages: 123, numOfJournal: 99, year: 2022},
+            {id: 1, name: 'Выпуск 55', price: 600, img: "img/file/ig.png", description: "Опание", numOfPages: 13, numOfJournal: 9, year: 222}
         ]
         makeAutoObservable(this)
     }
 
-    setIsAuth(bool){
-        this._isAuth = bool
+    setTypes(types){
+        this._isAuth = types
     }
-    setUser(user){
-        this._user = user
-    }
-
-    get isAuth(){
-        return this._isAuth
+    setJournals(journals){
+        this._user = journals
     }
 
-    get user(){
-        return this._user
+    get types(){
+        return this._types
+    }
+
+    get journals(){
+        return this._journals
     }
 
 
