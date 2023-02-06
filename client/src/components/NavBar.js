@@ -45,7 +45,12 @@ const NavBar = observer(() => {
                                 Все разделы
                             </NavDropdown.Item>
                         </NavDropdown>
-
+                        <Nav.Link href="#action2">Авторы</Nav.Link>
+                        <Nav.Link href="#action2">Компании</Nav.Link>
+                        <Nav.Link href="#action2">Конференции</Nav.Link>
+                        <Nav.Link href="#action2">Тренинги</Nav.Link>
+                        <Nav.Link href="#action2">Новости</Nav.Link>
+                        <Nav.Link href="#action2">Подписка</Nav.Link>
                     </Nav>
 
                     <Nav.Link className={"me-4"} href="mailto: super.bulhi@yandex.ru">pochta@hahahah.cpm</Nav.Link>
