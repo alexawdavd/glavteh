@@ -1,8 +1,8 @@
-import Admin from './pages/Admin'
 import {ADMIN_ROUTE, BASKET_ROUTE, JOURNAL_ROUTE, LOGIN_ROUTE, REG_ROUTE, SHOP_ROUTE} from "./utils/consts";
 import Basket from "./pages/Basket";
 import Shop from "./pages/Shop";
 import Auth from "./pages/Auth";
+import Admin from "./pages/Admin";
 import JournalPage from "./pages/JournalPage";
 
 export const authRoutes = [
@@ -13,7 +13,7 @@ export const authRoutes = [
     {
         path: BASKET_ROUTE,
         Component: Basket
-    }
+    },
 ]
 
 export const publicRoutes = [

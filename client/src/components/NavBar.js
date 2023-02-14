@@ -6,14 +6,16 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
-import {Image, ListGroup} from "react-bootstrap";
+import {Image, ListGroup, Row} from "react-bootstrap";
 import React, {useContext} from 'react';
-import {SHOP_ROUTE} from "../utils/consts";
+import {ADMIN_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import logo from "../assets/logo.png"
+import {useHistory} from "react-router-dom";
 
 const NavBar = observer(() => {
     const {journal} = useContext(Context)
     const {user} = useContext(Context)
+    const history = useHistory()
     return (
         <Navbar bg="light" expand="lg" className="pt-3 pb-3">
             <Container fluid className="pe-5 ps-5">
@@ -27,7 +29,7 @@ const NavBar = observer(() => {
                         style={{ maxHeight: '150px' }}
                         navbarScroll
                     >
-                        <Nav.Link href="#action1">Главная</Nav.Link>
+                        <Nav.Link to={MAIN_ROUTE}>Главная</Nav.Link>
                         <Nav.Link href="#action2">Выпуски</Nav.Link>
                         <NavDropdown title="Разделы" className={"pe-1 ps-1"} id="navbarScrollingDropdown">
                             {journal.types.map(type =>
@@ -39,6 +41,7 @@ const NavBar = observer(() => {
                                 >
                                     {type.name}
                                 </ListGroup.Item>
+
                             )}
                             <NavDropdown.Divider />
                             <NavDropdown.Item to={SHOP_ROUTE}>
@@ -53,13 +56,22 @@ const NavBar = observer(() => {
                         <Nav.Link href="#action2">Подписка</Nav.Link>
                     </Nav>
 
-                    <Nav.Link className={"me-4"} href="mailto: super.bulhi@yandex.ru">pochta@hahahah.cpm</Nav.Link>
-                    <Nav.Link className={"me-4"} href="tel:">88005553535</Nav.Link>
+                    <Row>
+                        <Nav.Link className={"me-4"} href="mailto: super.bulhi@yandex.ru">pochta@hahahah.cpm</Nav.Link>
+                        <Nav.Link className={"me-4"} href="tel:">88005553535</Nav.Link>
+                    </Row>
+
 
                     {user.isAuth ?
                         <Nav>
-                            <Button className={"me-2"}>Админ панель</Button>
-                            <Button className={"me-4"}>Войти</Button>
+                            <Button
+                                className={"me-2"}
+                                onClick={() => history.push(ADMIN_ROUTE)}
+                            >Админ панель</Button>
+                            <Button
+                                className={"me-4"}
+                                onClick={() => history.push(LOGIN_ROUTE)}
+                            >Выйти</Button>
                         </Nav>
                         :
                         <Nav>
