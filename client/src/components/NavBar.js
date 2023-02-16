@@ -16,6 +16,12 @@ const NavBar = observer(() => {
     const {journal} = useContext(Context)
     const {user} = useContext(Context)
     const history = useHistory()
+
+    const logOut = () => {
+        user.setUser({})
+        user.setIsAuth(false)
+    }
+
     return (
         <Navbar bg="light" expand="lg" className="pt-3 pb-3">
             <Container fluid className="pe-5 ps-5">
@@ -70,12 +76,12 @@ const NavBar = observer(() => {
                             >Админ панель</Button>
                             <Button
                                 className={"me-4"}
-                                onClick={() => history.push(LOGIN_ROUTE)}
+                                onClick={() => logOut()}
                             >Выйти</Button>
                         </Nav>
                         :
                         <Nav>
-                            <Button className={"me-4"} onClick={() => user.setIsAuth(true)}>Авторизация</Button>
+                            <Button className={"me-4"} onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</Button>
                         </Nav>
                     }
 
