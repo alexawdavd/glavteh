@@ -2,11 +2,10 @@ import React, {useEffect, useState} from 'react';
 import Container from "react-bootstrap/Container";
 import {Col, Image, Row} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import {observer} from "mobx-react-lite";
 import {useParams} from 'react-router-dom'
 import {fetchOneJournal} from "../http/journalAPI";
 
-const JournalPage = observer(() => {
+const JournalPage = () => {
     const [journal, setJournal] = useState({info: []})
     const {id} = useParams()
 
@@ -50,6 +49,6 @@ const JournalPage = observer(() => {
             </Row>
         </Container>
     );
-});
+};
 
 export default JournalPage;

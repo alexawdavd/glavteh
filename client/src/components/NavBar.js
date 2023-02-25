@@ -10,16 +10,17 @@ import {Image, ListGroup, Row} from "react-bootstrap";
 import React, {useContext} from 'react';
 import {ADMIN_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import logo from "../assets/logo.png"
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router";
 
 const NavBar = observer(() => {
     const {journal} = useContext(Context)
     const {user} = useContext(Context)
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const logOut = () => {
         user.setUser({})
         user.setIsAuth(false)
+        localStorage.removeItem('token')
     }
 
     return (
@@ -35,7 +36,7 @@ const NavBar = observer(() => {
                         style={{ maxHeight: '150px' }}
                         navbarScroll
                     >
-                        <Nav.Link to={MAIN_ROUTE}>Главная</Nav.Link>
+                        <Nav.Link href={MAIN_ROUTE}>Главная</Nav.Link>
                         <Nav.Link href="#action2">Выпуски</Nav.Link>
                         <NavDropdown title="Разделы" className={"pe-1 ps-1"} id="navbarScrollingDropdown">
                             {journal.types.map(type =>
@@ -50,7 +51,7 @@ const NavBar = observer(() => {
 
                             )}
                             <NavDropdown.Divider />
-                            <NavDropdown.Item to={SHOP_ROUTE}>
+                            <NavDropdown.Item href={SHOP_ROUTE}>
                                 Все разделы
                             </NavDropdown.Item>
                         </NavDropdown>
@@ -72,7 +73,7 @@ const NavBar = observer(() => {
                         <Nav>
                             <Button
                                 className={"me-2"}
-                                onClick={() => history.push(ADMIN_ROUTE)}
+                                onClick={() => navigate(ADMIN_ROUTE)}
                             >Админ панель</Button>
                             <Button
                                 className={"me-4"}
@@ -81,7 +82,7 @@ const NavBar = observer(() => {
                         </Nav>
                         :
                         <Nav>
-                            <Button className={"me-4"} onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</Button>
+                            <Button className={"me-4"} onClick={() => navigate(LOGIN_ROUTE)}>Авторизация</Button>
                         </Nav>
                     }
 

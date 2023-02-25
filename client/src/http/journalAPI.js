@@ -19,7 +19,7 @@ export const createJournal = async (journal) => {
 }
 
 export const fetchJournals = async () => {
-    const {data} = await $host.get('api/journal')
+    const {data} = await $host.get('api/journal', )
     return data
 }
 
