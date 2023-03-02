@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import {observer} from "mobx-react-lite";
 import {Context} from "./index";
 import {check} from "./http/userAPI";
-import data from "bootstrap/js/src/dom/data";
+import {Spinner} from "react-bootstrap";
 
 
 const App = observer(() => {
@@ -19,9 +19,12 @@ const App = observer(() => {
         }).finally(() => setLoading(false))
     }, [])
 
+    if (loading) {
+        return <Spinner animation={"grow"}/>
+    }
+
   return (
     <BrowserRouter>
-
         <NavBar/>
       <AppRouter />
     </BrowserRouter>

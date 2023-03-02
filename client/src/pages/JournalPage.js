@@ -7,12 +7,12 @@ import {fetchOneJournal} from "../http/journalAPI";
 
 const JournalPage = () => {
     const [journal, setJournal] = useState({info: []})
-    const {id} = useParams()
+    const {id} = useParams() //возвращает id
 
     useEffect(() => {
         fetchOneJournal(id).then(data => setJournal(data))
     }, [])
-
+    console.log(id)
         return (
         <Container className="mt-5">
             <Row>
@@ -21,7 +21,7 @@ const JournalPage = () => {
                 </Col>
 
                 <Col md={5}>
-                    <h2>{journal.name}/{journal.year}</h2>
+                    <h2>Выпуск №{journal.number}/{journal.year}</h2>
                     <h5>{journal.description}</h5>
                     <div className={"mt-4"}>
                         <h6>Цена: {journal.price}</h6>

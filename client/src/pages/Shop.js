@@ -6,13 +6,17 @@ import JournalList from "../components/JournalList";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {fetchJournals, fetchTypes} from "../http/journalAPI";
+import Pages from "../components/Pages";
 
 const Shop = observer(() => {
     const {journal} = useContext(Context)
 
     useEffect(() =>{
         fetchTypes().then(data => journal.setTypes(data))
-        fetchJournals().then(data => journal.setJournals(data.rows))
+        fetchJournals().then(data => {
+            journal.setJournals(data.rows)
+            journal.setTotalCount(data.count)
+        })
     }, [])
 
     return (
@@ -23,6 +27,7 @@ const Shop = observer(() => {
                 </Col>
                 <Col md={9}>
                     <JournalList/>
+                    <Pages/>
                 </Col>
             </Row>
         </Container>

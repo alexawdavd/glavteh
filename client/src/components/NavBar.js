@@ -72,17 +72,17 @@ const NavBar = observer(() => {
                     {user.isAuth ?
                         <Nav>
                             <Button
-                                className={"me-2"}
+                                className={"me-2 mb-2"}
                                 onClick={() => navigate(ADMIN_ROUTE)}
                             >Админ панель</Button>
                             <Button
-                                className={"me-4"}
+                                className={"me-4 mb-2"}
                                 onClick={() => logOut()}
                             >Выйти</Button>
                         </Nav>
                         :
                         <Nav>
-                            <Button className={"me-4"} onClick={() => navigate(LOGIN_ROUTE)}>Авторизация</Button>
+                            <Button className={"me-4 mb-2"} onClick={() => navigate(LOGIN_ROUTE)}>Авторизация</Button>
                         </Nav>
                     }
 

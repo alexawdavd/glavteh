@@ -5,6 +5,9 @@ export default class JournalStore {
         this._types = []
         this._journals = []
         this._selectedType = {}
+        this._page = 1
+        this._totalCount = 1
+        this._limit = 3
         makeAutoObservable(this)
     }
 
@@ -19,6 +22,13 @@ export default class JournalStore {
         this._selectedType = type
     }
 
+    setPage(page){
+        this._page = page
+    }
+
+    setTotalCount(count){
+        this._totalCount = count
+    }
 
     get types(){
         return this._types
@@ -32,6 +42,17 @@ export default class JournalStore {
         return this._selectedType
     }
 
+    get totalCount(){
+        return this._totalCount
+    }
+
+    get page(){
+        return this._page
+    }
+
+    get limit(){
+        return this._limit
+    }
 
 
 }

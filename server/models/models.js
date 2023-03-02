@@ -6,7 +6,6 @@ const User = sequelize.define('user',{
     email: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING},
     role: {type: DataTypes.STRING, defaultValue: "USER"},
-    login: {type: DataTypes.STRING, unique: true},
     name: {type: DataTypes.STRING},
     surname: {type: DataTypes.STRING}
 })
@@ -21,7 +20,6 @@ const BasketJournal = sequelize.define('basket_journal',{
 
 const Journal = sequelize.define('journal',{
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    name: {type: DataTypes.STRING, unique:true, allowNull: false},
     price: {type: DataTypes.INTEGER, allowNull: false},
     img: {type: DataTypes.STRING, allowNull: false},
     description: {type: DataTypes.STRING, allowNull: false},
