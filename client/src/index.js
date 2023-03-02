@@ -7,6 +7,7 @@ import UserStore from "./store/UserStore";
 import JournalStore from "./store/JournalStore";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+
 export const Context = createContext(null)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

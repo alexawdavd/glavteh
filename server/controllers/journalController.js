@@ -1,4 +1,4 @@
-const {Journal} = require('../models/models')
+const {Journal, JournalInfo} = require('../models/models')
 const ApiError = require('../error/ApiError')
 const uuid = require('uuid')
 const path = require('path')
@@ -6,13 +6,13 @@ const path = require('path')
 class JournalController {
     async create(req, res, next){
         try {
-            const {name, price, description, numOfPages, numOfJournal, year, typeId, articleId} = req.body
+            let {price, description, numOfPages, numOfJournal, year, typeId, info} = req.body
             const {img} = req.files
             let fileName = uuid.v4() + ".jpg"
             await img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
+
             const journal = await Journal.create({
-                name,
                 price,
                 description,
                 numOfPages,
@@ -21,6 +21,18 @@ class JournalController {
                 typeId,
                 img: fileName
             })
+
+            if (info) {
+                info = JSON.parse(info)
+                info.forEach(i =>
+                    JournalInfo.create({
+                        title: i.title,
+                        description: i.description,
+                        deviceId: journal.id
+                    })
+                )
+            }
+
             return res.json(journal)
         } catch (e){
             next(ApiError.badRequest(e.message))
@@ -44,7 +56,14 @@ class JournalController {
     }
 
     async getOne(req, res){
-
+        const {id} = req.params
+        const journal = await Journal.findOne(
+            {
+                where: {id},
+                include: [{model: JournalInfo, as: 'info'}]
+            },
+        )
+        return res.json(journal)
     }
 
 }

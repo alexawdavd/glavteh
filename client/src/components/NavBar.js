@@ -41,7 +41,7 @@ const NavBar = observer(() => {
                         <NavDropdown title="Разделы" className={"pe-1 ps-1"} id="navbarScrollingDropdown">
                             {journal.types.map(type =>
                                 <ListGroup.Item
-                                    className={"pb-2"}
+                                    className={"pb-3 ps-2 pe-1 me-3 ms-3 mt-1"}
                                     style={{cursor: 'pointer', lineHeight: "1.1"}}
                                     onClick={() => journal.setSelectedType(type)}
                                     key={type.id}
@@ -55,17 +55,19 @@ const NavBar = observer(() => {
                                 Все разделы
                             </NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link href="#action2">Авторы</Nav.Link>
-                        <Nav.Link href="#action2">Компании</Nav.Link>
                         <Nav.Link href="#action2">Конференции</Nav.Link>
-                        <Nav.Link href="#action2">Тренинги</Nav.Link>
                         <Nav.Link href="#action2">Новости</Nav.Link>
-                        <Nav.Link href="#action2">Подписка</Nav.Link>
+                        <NavDropdown title={"Другое"}>
+                            <ListGroup.Item className={"pb-3 ps-2 pe-1 me-3 ms-3 mt-1"}>Компании</ListGroup.Item>
+                            <ListGroup.Item className={"pb-3 ps-2 pe-1 me-3 ms-3 mt-1"}>Тренинги</ListGroup.Item>
+                            <ListGroup.Item className={"pb-3 ps-2 pe-1 me-3 ms-3 mt-1"}>Подписка</ListGroup.Item>
+                            <ListGroup.Item className={"pb-3 ps-2 pe-1 me-3 ms-3 mt-1"}>Авторы</ListGroup.Item>
+                        </NavDropdown>
                     </Nav>
 
                     <Row>
-                        <Nav.Link className={"me-4"} href="mailto: super.bulhi@yandex.ru">pochta@hahahah.cpm</Nav.Link>
-                        <Nav.Link className={"me-4"} href="tel:">88005553535</Nav.Link>
+                        <Nav.Link className={"me-4"} href="mailto: super.bulhi@yandex.ru">info@glavteh.ru</Nav.Link>
+                        <Nav.Link className={"me-4"} href="tel:">+7 (495) 371-01-74</Nav.Link>
                     </Row>
 
 
@@ -91,10 +93,10 @@ const NavBar = observer(() => {
                         <Form.Control
                             type="search"
                             placeholder="Введите текст..."
-                            className="me-2"
+                            className="me-2 mb-2"
                             aria-label="Search"
                         />
-                        <Button variant="outline-success">Найти</Button>
+                        <Button className="me-2 mb-2" variant="outline-success">Найти</Button>
                     </Form>
 
                 </Navbar.Collapse>

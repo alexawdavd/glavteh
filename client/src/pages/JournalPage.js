@@ -12,7 +12,7 @@ const JournalPage = () => {
     useEffect(() => {
         fetchOneJournal(id).then(data => setJournal(data))
     }, [])
-    console.log(id)
+
         return (
         <Container className="mt-5">
             <Row>

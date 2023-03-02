@@ -17,6 +17,7 @@ export const fetchTypes = async (typeId, page, limit) => {
 
 export const createJournal = async (journal) => {
     const {data} = await $authHost.post('api/journal', journal)
+    console.log(data)
     return data
 }
 

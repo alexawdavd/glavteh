@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {Button, Col, Dropdown, Form, FormControl, Modal, Row} from "react-bootstrap";
+import {Button, Col, Dropdown, Form, FormControl, FormText, InputGroup, Modal, Row} from "react-bootstrap";
 import {Context} from "../../index";
 import DropdownToggle from "react-bootstrap/DropdownToggle";
 import DropdownMenu from "react-bootstrap/DropdownMenu";
@@ -61,20 +61,30 @@ const CreateJournal = observer(({show, onHide}) => {
 
                 <Modal.Body>
                     <Form>
+                        <FormText>Раздел журнала</FormText>
                         <Dropdown className={"mt-2"} >
                             <DropdownToggle  variant={"outline-dark"}>{journal.selectedType.name || 'Выберите раздел'}</DropdownToggle>
                             <DropdownMenu>
                                 {journal.types.map(type =>
-                                    <Dropdown.Item onClick={() => journal.setSelectedType(type)} key={type.id}>{type.name}</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => {journal.setSelectedType(type);}} key={type.id}>{type.name}</Dropdown.Item>
                                 )}
                             </DropdownMenu>
                         </Dropdown>
-                        <FormControl value={numOfJournal} onChange={e => setNumOfJournal(e.target.value)} type="number" className={"mt-2"} placeholder={"Номер журнала"}/>
-                        <FormControl value={year} onChange={e => setYear(e.target.value)} type="number" className={"mt-2"} placeholder={"Год"}/>
-                        <FormControl value={price} onChange={e => setPrice(e.target.value)} className={"mt-2"} placeholder={"Цена"}/>
-                        <FormControl value={file} onChange={e => setFile(e.target.value)} type="file" className={"mt-2"} placeholder={"Изображение"} onClick={selectFile}/>
-                        <FormControl value={description} onChange={e => setDescription(e.target.value)} className={"mt-2"} placeholder={"Описание"}/>
-                        <FormControl value={numOfPages} onChange={e => setNumOfPages(e.target.value)} type="number" className={"mt-2"} placeholder={"Кол-во страниц"}/>
+                        <FormText>Номер журнала</FormText>
+                        <FormControl value={numOfJournal || 0} onChange={e => setNumOfJournal(e.target.value)} type="number" className={"mt-2"}  />
+                        <FormText>Год выпуска</FormText>
+                        <FormControl value={year || 0} onChange={e => setYear(e.target.value)} type="number" className={"mt-2"} />
+                        <FormText>Цена</FormText>
+                        <FormControl value={price || 0} onChange={e => setPrice(e.target.value)} className={"mt-2"}/>
+                        <FormText>Фото обложки</FormText>
+                        <FormControl value={file || ""} onChange={e => setFile(e.target.value)} type="file" className={"mt-2"} onClick={selectFile}/>
+                        <FormText>Описание журнала</FormText>
+                        <InputGroup className={"mt-1 mb-2"}>
+                            <InputGroup.Text>Описание</InputGroup.Text>
+                            <Form.Control value={description || ""} onChange={e => setFile(e.target.value)} as="textarea" aria-label="With textarea" />
+                        </InputGroup>
+                        <FormText>Количество страниц</FormText>
+                        <FormControl value={numOfPages || 0} onChange={e => setNumOfPages(e.target.value)} type="number" className={"mt-2"}/>
                         <hr/>
 
                         <Button

@@ -114,10 +114,15 @@ const ConferenceInfo = sequelize.define('conference_info', {
     description: {type: DataTypes.STRING, allowNull: false},
     img: {type: DataTypes.STRING}
 })
+const JournalInfo = sequelize.define('journal_info', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    title: {type: DataTypes.STRING, allowNull: false},
+    description: {type: DataTypes.STRING, allowNull: false},
+})
 
 
-
-
+Journal.hasMany(JournalInfo, {as: 'info'});
+JournalInfo.belongsTo(Journal)
 
 // User
 User.hasOne(Basket)
@@ -131,8 +136,6 @@ Journal.belongsTo(BasketJournal)
 // JournalPage
 Journal.hasOne(Type)
 Type.belongsTo(Journal)
-Journal.hasMany(Article)
-Article.belongsTo(Journal)
 // Type
 Type.hasMany(Journal)
 Journal.belongsTo(Type)
@@ -143,8 +146,6 @@ Article.hasMany(Author)
 Author.belongsTo(Article)
 Article.hasMany(ArticleInfo)
 ArticleInfo.belongsTo(Article)
-Article.hasOne(Journal)
-Journal.belongsTo(Article)
 Article.hasOne(Type)
 Type.belongsTo(Article)
 // Author
@@ -183,7 +184,8 @@ module.exports = {
     Conference,
     ArticleInfo,
     NewsInfo,
-    ConferenceInfo
+    ConferenceInfo,
+    JournalInfo
 }
 
 

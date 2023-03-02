@@ -12,6 +12,7 @@ const Admin = observer(() => {
     return (
         <Container className={"d-flex flex-column"}>
 
+            <h1 className={"mt-5 text-center"}>Добавить</h1>
             <Button
                 onClick={() => setTypeVisible(true)}
                 variant={"outline-dark"}
@@ -26,6 +27,32 @@ const Admin = observer(() => {
 
             <CreateJournal show={journalVisible} onHide={() => setJournalVisible(false)}/>
             <CreateType show={typeVisible} onHide={() => setTypeVisible(false)}/>
+
+            <h1 className={"mt-5 text-center"}>Удалить</h1>
+            <Button
+                onClick={() => setTypeVisible(true)}
+                variant={"outline-danger"}
+                className={"mt-2 p-3"}
+            >Удалить раздел</Button>
+
+            <Button
+                onClick={() => setJournalVisible(true)}
+                variant={"outline-danger"}
+                className={"mt-2 p-3"}
+            >Удалить журнал</Button>
+
+            <h1 className={"mt-5 text-center"}>Редактировать</h1>
+            <Button
+                onClick={() => setTypeVisible(true)}
+                variant={"outline-warning"}
+                className={"mt-2 p-3"}
+            >Редактировать раздел</Button>
+
+            <Button
+                onClick={() => setJournalVisible(true)}
+                variant={"outline-warning"}
+                className={"mt-2 p-3"}
+            >Редактировать журнал</Button>
 
         </Container>
     );
